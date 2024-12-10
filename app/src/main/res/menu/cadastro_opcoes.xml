@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuItemSalvar"
+        android:icon="@drawable/floppy_disk"
+        android:title="@string/salvar"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/menuItemSobre"
+        android:icon="@drawable/new_info"
+        android:title="Item"
+        app:showAsAction="ifRoom" />
+</menu>

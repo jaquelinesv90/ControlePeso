@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="id">
+        <item>0</item>
+        <item>1</item>
+    </integer-array>
+
+    <string-array name="data_avaliacao">
+        <item>"10/02/2024"</item>
+        <item>"17/08/2024"</item>
+    </string-array>
+
+    <string-array name="altura">
+        <item>"1.70"</item>
+        <item>"1.70"</item>
+    </string-array>
+
+    <integer-array name="peso">
+        <item>68</item>
+        <item>70</item>
+    </integer-array>
+
+    <string-array name="genero">
+        <item>@string/masculino</item>
+        <item>@string/masculino</item>
+    </string-array>
+
+    <string-array name="data_nascimento">
+        <item>"10/02/2024"</item>
+        <item>"10/02/2024"</item>
+    </string-array>
+
+    <string-array name="objetivo">
+        <item>@string/hipertrofia</item>
+        <item>@string/emagrecimento</item>
+    </string-array>
+</resources>

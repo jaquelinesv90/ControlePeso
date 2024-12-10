@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/listViewDados"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:onClick="sobre"
+    tools:context=".CadastroActivity">
+
+    <TextView
+        android:id="@+id/textViewDataAvaliacao"
+        android:layout_width="81dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="83dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="7dp"
+        android:text="@string/dataAvalicao"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/editTextDateDtAvaliacao"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLogoUsuario" />
+
+    <TextView
+        android:id="@+id/textViewAltura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="19dp"
+        android:text="@string/altura"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/editTextNumberAltura"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDataAvaliacao" />
+
+    <TextView
+        android:id="@+id/textViewPeso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="9dp"
+        android:text="@string/peso"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/editTextNumberPeso"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAltura" />
+
+    <TextView
+        android:id="@+id/textViewGenero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="94dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="40dp"
+        android:text="@string/genero"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewDtNascimento"
+        app:layout_constraintEnd_toStartOf="@+id/radioGroupGenero"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewDtNascimento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="63dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="42dp"
+        android:text="@string/dtNascimento"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewObjetivo"
+        app:layout_constraintEnd_toStartOf="@+id/editTextDateDtNascimento"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewObjetivo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="93dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="169dp"
+        android:text="@string/objetivo"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerObjetivo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextDateDtAvaliacao"
+        android:layout_width="150dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="90dp"
+        android:layout_marginBottom="15dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/editTextNumberAltura"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewDataAvaliacao"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLogoUsuario" />
+
+    <EditText
+        android:id="@+id/editTextNumberAltura"
+        android:layout_width="150dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="90dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewAltura"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDateDtAvaliacao" />
+
+    <EditText
+        android:id="@+id/editTextNumberPeso"
+        android:layout_width="150dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="90dp"
+        android:layout_marginBottom="10dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroupGenero"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewPeso"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumberAltura"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupGenero"
+        android:layout_width="145dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="97dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextDateDtNascimento"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewGenero">
+
+        <RadioButton
+            android:id="@+id/radioButtonFeminino"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/feminino" />
+
+        <RadioButton
+            android:id="@+id/radioButtonMasculino"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/masculino" />
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/editTextDateDtNascimento"
+        android:layout_width="150dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginEnd="90dp"
+        android:layout_marginBottom="25dp"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerObjetivo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewDtNascimento" />
+
+    <Spinner
+        android:id="@+id/spinnerObjetivo"
+        android:layout_width="200dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="161dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewObjetivo" />
+
+    <ImageView
+        android:id="@+id/imageViewLogoUsuario"
+        android:layout_width="152dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="130dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextDateDtAvaliacao"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/user" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

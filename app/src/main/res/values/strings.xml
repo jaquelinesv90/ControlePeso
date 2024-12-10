@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">"Controle\nPeso"</string>
+    <string name="dataAvalicao">Avaliação</string>
+    <string name="altura">Altura</string>
+    <string name="peso">Peso(kg)</string>
+    <string name="genero">Gênero</string>
+    <string name="dtNascimento">"Data de\nNascimento"</string>
+    <string name="objetivo">Objetivo</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="masculino">Masculino</string>
+    <string name="feminino">Feminino</string>
+
+    <string name="hipertrofia">Hipertrofia</string>
+    <string name="hiper">Hipertr</string>
+    <string name="emagrecimento">Emagrecimento</string>
+    <string name="emagre">Emagreci</string>
+    <string name="id">Id</string>
+    <string name="nome_app">Meu Controle de Peso</string>
+    <string name="icone_descricao">Icones</string>
+    <string name="autor">Autor</string>
+    <string name="valor_icone">"https://www.flaticon.com/></string>
+    <string name="cancelar">Cancelar</string>
+    <string name="sobre">Sobre</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="editar">Editar</string>
+    <string name="novo">Novo</string>
+    <string name="salvar">Salvar</string>
+    <string name="voltar">Voltar</string>
+    <string name="versao">Versão</string>
+    <string name="valorVersao">0.0.1</string>
+    <string name="meu_controle_de_peso">Meu Controle de Peso</string>
+    <string name="n_o_pode_ser_vazio">não pode ser vazio</string>
+    <string name="imc">Imc</string>
+    <string name="ida">Consumo de água-dia(ml)</string>
+    <string name="jaqueline">Jaquelinesv90@gmail.com</string>
+    <string name="title_activity_splash">SplashActivity</string>
+</resources>

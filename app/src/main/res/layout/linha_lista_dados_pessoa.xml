@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/textViewId"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textViewDtAvaliacao"
+        android:layout_width="84dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="2dp"
+        android:text="@string/dataAvalicao"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textViewValorDtAvaliacao"
+        app:layout_constraintEnd_toStartOf="@+id/textViewPesoKg"
+        app:layout_constraintStart_toEndOf="@+id/textViewID"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewValorDtAvaliacao"
+        android:layout_width="84dp"
+        android:layout_height="34dp"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/textViewValorPeso"
+        app:layout_constraintStart_toEndOf="@+id/textViewValorId"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDtAvaliacao" />
+
+    <TextView
+        android:id="@+id/textViewPesoKg"
+        android:layout_width="55dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="2dp"
+        android:text="@string/peso"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textViewValorPeso"
+        app:layout_constraintEnd_toStartOf="@+id/textViewObj"
+        app:layout_constraintStart_toEndOf="@+id/textViewDtAvaliacao"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewValorPeso"
+        android:layout_width="55dp"
+        android:layout_height="34dp"
+        android:textSize="12sp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/textViewValorObjetivo"
+        app:layout_constraintStart_toEndOf="@+id/textViewValorDtAvaliacao"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPesoKg" />
+
+    <TextView
+        android:id="@+id/textViewValorObjetivo"
+        android:layout_width="86dp"
+        android:layout_height="34dp"
+        android:textSize="12sp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/textViewValorIda"
+        app:layout_constraintStart_toEndOf="@+id/textViewValorPeso"
+        app:layout_constraintTop_toBottomOf="@+id/textViewObj" />
+
+    <TextView
+        android:id="@+id/textViewID"
+        android:layout_width="25dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="2dp"
+        android:text="@string/id"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textViewValorId"
+        app:layout_constraintEnd_toStartOf="@+id/textViewDtAvaliacao"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewValorId"
+        android:layout_width="25dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="1dp"
+        android:textSize="12sp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/textViewValorDtAvaliacao"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewID" />
+
+    <TextView
+        android:id="@+id/textViewObj"
+        android:layout_width="86dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="2dp"
+        android:text="@string/objetivo"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textViewValorObjetivo"
+        app:layout_constraintEnd_toStartOf="@+id/textViewIda"
+        app:layout_constraintStart_toEndOf="@+id/textViewPesoKg"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewImc"
+        android:layout_width="75dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="1dp"
+        android:text="@string/imc"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewIda"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewValorImc"
+        android:layout_width="83dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="1dp"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewValorIda"
+        app:layout_constraintTop_toBottomOf="@+id/textViewImc" />
+
+    <TextView
+        android:id="@+id/textViewIda"
+        android:layout_width="75dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="2dp"
+        android:text="@string/ida"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textViewObj"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewValorIda"
+        android:layout_width="75dp"
+        android:layout_height="34dp"
+        android:textSize="12sp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/textViewValorImc"
+        app:layout_constraintStart_toEndOf="@+id/textViewValorObjetivo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewIda" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
