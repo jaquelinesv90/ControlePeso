@@ -34,4 +34,5 @@
     <string name="ida">Consumo de água-dia(ml)</string>
     <string name="jaqueline">Jaquelinesv90@gmail.com</string>
     <string name="title_activity_splash">SplashActivity</string>
+    <string name="excluir">Excluir</string>
 </resources>

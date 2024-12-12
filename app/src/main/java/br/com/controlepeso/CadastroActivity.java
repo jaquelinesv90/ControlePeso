@@ -8,17 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +21,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -37,12 +31,12 @@ import br.com.controlepeso.persistencia.PessoasDatabase;
 public class CadastroActivity extends AppCompatActivity {
 
     public static final String MODO = "MODO";
-    public static final String ID = "ID";
     public static final int NOVO = 1;
     public static final int ALTERAR = 2;
 
     private int modo;
-    private Pessoa pessoa;
+
+    private Pessoa pessoaOriginal;
 
     private EditText editTextDateDtAvaliacao;
     private EditText editTextNumberAltura;
@@ -53,6 +47,7 @@ public class CadastroActivity extends AppCompatActivity {
 
     private EditText editTextImc;
 
+    public static final String ID = "ID";
     public static final String DT_AVALIACAO = "DT_AVALIACAO";
     public static final String ALTURA = "ALTURA";
     public static final String PESO = "PESO";
@@ -73,15 +68,25 @@ public class CadastroActivity extends AppCompatActivity {
 
         activity.startActivityForResult(intent,requestCode);
     }
-    public void alterar(Activity activity, int requestCode, Pessoa pessoa){
+
+
+    public static void editarDadosPessoa(AppCompatActivity activity,
+                                         ActivityResultLauncher<Intent> launcher,
+                                         Pessoa pessoa){
         Intent intent = new Intent(activity, CadastroActivity.class);
 
         intent.putExtra(MODO,ALTERAR);
         intent.putExtra(ID,pessoa.getId());
+        intent.putExtra(DT_AVALIACAO, pessoa.getDtAvaliacao());
+        intent.putExtra(ALTURA, pessoa.getAltura());
+        intent.putExtra(PESO,pessoa.getPeso());
+        intent.putExtra(GENERO,pessoa.getGenero());
+        intent.putExtra(DT_NASCIMENTO,pessoa.getDtNascimento());
+        intent.putExtra(OBJETIVO,pessoa.getObjetivo());
 
-        activity.startActivityForResult(intent,requestCode);
+        launcher.launch(intent);
+       // activity.startActivityForResult(intent,requestCode);
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,22 +126,22 @@ public class CadastroActivity extends AppCompatActivity {
 
             PessoasDatabase database = PessoasDatabase.getDatabase(this);
 
-            pessoa = database.pessoaDao().queryById(id);
+            pessoaOriginal = database.pessoaDao().queryById(id);
 
             //setar os outros campos
-            editTextDateDtAvaliacao.setText(pessoa.getDtAvaliacao());
-            editTextNumberAltura.setText(pessoa.getAltura());
-            editTextNumberPeso.setText(pessoa.getPeso());
-            editTextDateDtNascimento.setText(pessoa.getDtNascimento());
-            editTextImc.setText(pessoa.getImc());
+            editTextDateDtAvaliacao.setText(pessoaOriginal.getDtAvaliacao());
+            editTextNumberAltura.setText(pessoaOriginal.getAltura());
+            editTextNumberPeso.setText(pessoaOriginal.getPeso());
+            editTextDateDtNascimento.setText(pessoaOriginal.getDtNascimento());
+            editTextImc.setText(pessoaOriginal.getImc());
 
-            if(pessoa.getObjetivo().toString().equals(R.string.emagrecimento)){
+            if(pessoaOriginal.getObjetivo().toString().equals(R.string.emagrecimento)){
                 spinnerObjetivo.setSelected(true);
             }else{
                 spinnerObjetivo.setSelected(false);
             }
 
-            String sexo = pessoa.getGenero().toString();
+            String sexo = pessoaOriginal.getGenero().toString();
             if(sexo.equals("Masculino")){
                 radioGroupGenero.check(R.id.radioButtonMasculino);
             }else{
@@ -147,53 +152,13 @@ public class CadastroActivity extends AppCompatActivity {
 
             setTitle(R.string.novo);
 
-            pessoa = new Pessoa();
+            pessoaOriginal = new Pessoa();
 
             Date dataAtual = new Date();
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
             String date = dateFormat.format(dataAtual);
             editTextDateDtAvaliacao.setText(date);
         }
-    }
-
-    private void popularSpinner(){
-        ArrayList<String> lista = new ArrayList<>();
-
-        lista.add("Emagrecimento");
-        lista.add("Ganho massa muscular");
-
-        ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(this,
-                        android.R.layout.simple_list_item_1,
-                        lista);
-        spinnerObjetivo.setAdapter(adapter);
-    }
-
-    public void sobre(View view){
-        SobreActivity.nova(this);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.cadastro_opcoes,menu);
-        return true;
-    }
-
-    //metodo para chamar os botoes da barra de cima
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int menuSelecionado = item.getItemId();
-
-        if(menuSelecionado == R.id.menuItemSobre){
-            sobre(item.getActionView());
-            return true;
-        }
-
-        if(menuSelecionado == R.id.menuItemSalvar){
-            salvar();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     public void salvar(){
@@ -234,21 +199,65 @@ public class CadastroActivity extends AppCompatActivity {
         }
 
         // pessoa.setId();
-        pessoa.setDtAvaliacao(dataAvaliacao);
-        pessoa.setPeso(peso);
-        pessoa.setObjetivo(objetivo);
-        pessoa.setIda(CalculaUtils.calculaIDA(peso));
-        pessoa.setImc(CalculaUtils.calculaIMC(altura,peso));
-        pessoa.setIda(CalculaUtils.calculaIDA(peso));
+        pessoaOriginal.setDtAvaliacao(dataAvaliacao);
+        pessoaOriginal.setPeso(peso);
+        pessoaOriginal.setObjetivo(objetivo);
+        pessoaOriginal.setIda(CalculaUtils.calculaIDA(peso));
+        pessoaOriginal.setImc(CalculaUtils.calculaIMC(altura,peso));
+        pessoaOriginal.setIda(CalculaUtils.calculaIDA(peso));
 
         PessoasDatabase database = PessoasDatabase.getDatabase(this);
 
         if(modo == NOVO){
-            database.pessoaDao().insert(pessoa);
+            database.pessoaDao().insert(pessoaOriginal);
         }else{
-            database.pessoaDao().update(pessoa);
+            database.pessoaDao().update(pessoaOriginal);
         }
         setResult(Activity.RESULT_OK);
         finish();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.cadastro_opcoes,menu);
+        return true;
+    }
+
+    //metodo para chamar os botoes da barra de cima
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int menuSelecionado = item.getItemId();
+
+        if(menuSelecionado == R.id.menuItemSobre){
+            sobre(item.getActionView());
+            return true;
+        }
+
+        if(menuSelecionado == R.id.menuItemSalvar){
+            salvar();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    private void popularSpinner(){
+        ArrayList<String> lista = new ArrayList<>();
+
+        lista.add("Emagrecimento");
+        lista.add("Ganho massa muscular");
+
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<>(this,
+                        android.R.layout.simple_list_item_1,
+                        lista);
+        spinnerObjetivo.setAdapter(adapter);
+    }
+
+    public void sobre(View view){
+        SobreActivity.nova(this);
+    }
+
+
+
 }
